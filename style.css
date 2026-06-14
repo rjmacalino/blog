@@ -1,6 +1,4 @@
-/* ============================================================
-   Raymond's hobby blog — dark neon / glassmorphism theme
-   ============================================================ */
+/* hobby blog styles. dark theme with glass panels and neon gradients. */
 
 :root {
   --bg:        #0a0a12;
@@ -60,7 +58,7 @@ img { display: block; max-width: 100%; }
   -webkit-text-fill-color: transparent;
 }
 
-/* ── Nav ── */
+/* Nav */
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -96,7 +94,7 @@ img { display: block; max-width: 100%; }
   color: var(--text); font-size: 1.5rem; cursor: pointer;
 }
 
-/* ── Hero ── */
+/* Hero */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -168,7 +166,7 @@ img { display: block; max-width: 100%; }
 }
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
 
-/* ── Section heads ── */
+/* Section heads */
 .section-head { text-align: center; margin-bottom: 3rem; }
 .section-title {
   font-size: clamp(1.8rem, 5vw, 2.8rem);
@@ -177,7 +175,7 @@ img { display: block; max-width: 100%; }
 }
 .section-head p { color: var(--muted); margin-top: 0.5rem; }
 
-/* ── Glass + About ── */
+/* Glass + About */
 .glass {
   background: var(--glass);
   border: 1px solid var(--glass-brd);
@@ -199,7 +197,7 @@ img { display: block; max-width: 100%; }
 }
 .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
-/* ── Card grid ── */
+/* Card grid */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -297,11 +295,11 @@ img { display: block; max-width: 100%; }
   color: var(--text);
 }
 
-/* ── Reveal animation ── */
+/* Reveal animation */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── Footer ── */
+/* Footer */
 .site-footer {
   text-align: center;
   padding: 4rem 1.5rem 3rem;
@@ -311,7 +309,7 @@ img { display: block; max-width: 100%; }
 .foot-quote { font-size: 1.1rem; font-style: italic; color: var(--text); margin-bottom: 0.75rem; }
 .foot-sig { font-size: 0.85rem; color: var(--muted); }
 
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 720px) {
   .nav-menu {
     position: absolute; top: 100%; right: 1rem; left: 1rem;

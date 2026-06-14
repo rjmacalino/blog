@@ -1,10 +1,7 @@
 'use strict';
 
-/* ============================================================
-   Raymond's hobby blog — data + renderers (vanilla JS)
-   Drop a poster into assets/<img>.jpg and it appears
-   automatically; until then a themed gradient + emoji shows.
-   ============================================================ */
+// hobby blog. card data lives here, rendering below.
+// to use real posters, drop assets/<name>.jpg and it replaces the gradient placeholder.
 
 (function () {
   const DATA = {
@@ -13,7 +10,7 @@
         blurb: 'The deepest MOBA there is. 100+ heroes, endless strategy, and the highest highs after a clutch teamfight.',
         tags: ['MOBA', 'Ranked', 'Valve'], theme: 'crimson' },
       { title: 'Resident Evil', emoji: '🧟', img: 'residentevil', url: 'https://www.residentevil.com',
-        blurb: 'Survival horror at its finest. From Raccoon City to the village — tense, gory and endlessly replayable.',
+        blurb: 'Survival horror at its finest. From Raccoon City to the village. Tense, gory and endlessly replayable.',
         tags: ['Survival Horror', 'Capcom', 'Franchise'], theme: 'toxic' },
       { title: 'Genshin Impact', emoji: '🗡️', img: 'genshin', url: 'https://genshin.hoyoverse.com',
         blurb: 'A gorgeous open world I keep coming back to. Teyvat, elemental combos, and one more wish on the banner.',
@@ -21,7 +18,7 @@
     ],
     anime: [
       { title: 'Naruto', emoji: '🍥', img: 'naruto', url: 'https://www.viz.com/naruto',
-        blurb: 'The ninja way. Grew up with this one — Pain arc still goes unbelievably hard.',
+        blurb: 'The ninja way. Grew up with this one, and the Pain arc still goes unbelievably hard.',
         tags: ['Shonen', 'Classic'], theme: 'ember' },
       { title: 'One Piece', emoji: '🏴‍☠️', img: 'onepiece', url: 'https://www.viz.com/one-piece',
         blurb: 'The greatest adventure ever told. The Straw Hats, the world-building, the emotional gut-punches.',
@@ -41,7 +38,7 @@
         blurb: 'Bazinga. Nerd humor that hits home a little too often.',
         tags: ['Sitcom', 'Nerdy'], theme: 'aether' },
       { title: 'How I Met Your Mother', emoji: '☂️', img: 'himym', url: 'https://en.wikipedia.org/wiki/How_I_Met_Your_Mother',
-        blurb: 'Legen — wait for it — dary. The Playbook, the slaps, the feels.',
+        blurb: 'Legen, wait for it, dary. The Playbook, the slaps, the feels.',
         tags: ['Sitcom', 'Drama'], theme: 'ocean' },
       { title: 'Brooklyn Nine-Nine', emoji: '🚓', img: 'b99', url: 'https://en.wikipedia.org/wiki/Brooklyn_Nine-Nine',
         blurb: 'Cool cool cool cool. The best ensemble comedy of its era. Noice. Toit.',
@@ -49,7 +46,7 @@
     ],
     screen: [
       { title: 'Game of Thrones', emoji: '🐉', img: 'got', url: 'https://www.hbo.com/game-of-thrones',
-        blurb: 'Westeros at its peak was untouchable. Dragons, politics, betrayal — winter came hard.',
+        blurb: 'Westeros at its peak was untouchable. Dragons, politics, betrayal, and winter came hard.',
         tags: ['Fantasy', 'Epic'], theme: 'iron' },
       { title: 'Marvel (MCU)', emoji: '🕷️', img: 'mcu', url: 'https://www.marvel.com/movies',
         blurb: 'A decade-long saga that paid off in Endgame. I was there for every "I am Iron Man."',
@@ -65,7 +62,7 @@
     const linkLabel = isWiki ? 'Wikipedia ↗' : 'Official site ↗';
     return `
       <a class="hcard theme-${item.theme}" href="${item.url}" target="_blank" rel="noopener"
-         aria-label="${item.title} — ${isWiki ? 'read on Wikipedia' : 'visit official site'}">
+         aria-label="${item.title}, ${isWiki ? 'read on Wikipedia' : 'visit official site'}">
         <div class="hcard-media">
           <img src="assets/${item.img}.jpg" alt="${item.title}" loading="lazy"
                onerror="this.style.display='none'" />
@@ -88,7 +85,7 @@
     el.innerHTML = list.map(cardHTML).join('');
   }
 
-  // ── Mobile nav ──
+  // mobile menu toggle
   function initNav() {
     const toggle = document.querySelector('.nav-toggle');
     const menu = document.querySelector('.nav-menu');
@@ -100,7 +97,7 @@
       a.addEventListener('click', () => menu.classList.remove('open')));
   }
 
-  // ── Navbar solidify + active link on scroll ──
+  // solidify navbar + highlight the section you're on
   function initScroll() {
     const navbar = document.getElementById('navbar');
     const links = document.querySelectorAll('.nav-menu a');
@@ -119,7 +116,7 @@
     sections.forEach(s => obs.observe(s));
   }
 
-  // ── Scroll-reveal cards ──
+  // fade cards in as they enter the viewport
   function initReveal() {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -132,7 +129,7 @@
     });
   }
 
-  // ── Card tilt on hover (subtle) ──
+  // lean the card toward the cursor
   function initTilt() {
     document.querySelectorAll('.card-grid').forEach(grid => {
       grid.addEventListener('mousemove', (e) => {
