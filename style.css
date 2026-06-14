@@ -144,7 +144,7 @@ img { display: block; max-width: 100%; }
   margin: 0 auto 2rem;
 }
 .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
-.hero-tags span {
+.hero-tags a {
   background: var(--glass);
   border: 1px solid var(--glass-brd);
   backdrop-filter: blur(6px);
@@ -152,6 +152,12 @@ img { display: block; max-width: 100%; }
   border-radius: 2rem;
   font-size: 0.85rem;
   font-weight: 600;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.hero-tags a:hover {
+  background: rgba(177,76,255,0.18);
+  border-color: rgba(177,76,255,0.5);
+  transform: translateY(-2px);
 }
 .scroll-cue {
   display: inline-block;
@@ -201,6 +207,7 @@ img { display: block; max-width: 100%; }
 }
 
 .hcard {
+  display: block;
   position: relative;
   border-radius: 1.25rem;
   overflow: hidden;
@@ -208,8 +215,9 @@ img { display: block; max-width: 100%; }
   border: 1px solid var(--glass-brd);
   transition: transform 0.2s ease, box-shadow 0.3s, border-color 0.3s;
   transform-style: preserve-3d;
-  cursor: default;
+  cursor: pointer;
   outline: none;
+  color: inherit;
 }
 .hcard:hover, .hcard:focus-visible {
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
@@ -235,6 +243,27 @@ img { display: block; max-width: 100%; }
   transition: transform 0.3s;
 }
 .hcard:hover .hcard-emoji { transform: scale(1.12) rotate(-4deg); }
+
+/* "Official site ↗" cue, fades in on hover */
+.hcard-visit {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.8rem;
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: 2rem;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.hcard:hover .hcard-visit,
+.hcard:focus-visible .hcard-visit { opacity: 1; transform: translateY(0); }
 
 /* themed gradient background behind emoji */
 .theme-crimson .hcard-media { background: var(--crimson); }

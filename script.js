@@ -9,52 +9,52 @@
 (function () {
   const DATA = {
     games: [
-      { title: 'Dota 2', emoji: '⚔️', img: 'dota2',
+      { title: 'Dota 2', emoji: '⚔️', img: 'dota2', url: 'https://www.dota2.com',
         blurb: 'The deepest MOBA there is. 100+ heroes, endless strategy, and the highest highs after a clutch teamfight.',
         tags: ['MOBA', 'Ranked', 'Valve'], theme: 'crimson' },
-      { title: 'Resident Evil', emoji: '🧟', img: 'residentevil',
+      { title: 'Resident Evil', emoji: '🧟', img: 'residentevil', url: 'https://www.residentevil.com',
         blurb: 'Survival horror at its finest. From Raccoon City to the village — tense, gory and endlessly replayable.',
         tags: ['Survival Horror', 'Capcom', 'Franchise'], theme: 'toxic' },
-      { title: 'Genshin Impact', emoji: '🗡️', img: 'genshin',
+      { title: 'Genshin Impact', emoji: '🗡️', img: 'genshin', url: 'https://genshin.hoyoverse.com',
         blurb: 'A gorgeous open world I keep coming back to. Teyvat, elemental combos, and one more wish on the banner.',
         tags: ['Open World', 'Gacha', 'miHoYo'], theme: 'aether' },
     ],
     anime: [
-      { title: 'Naruto', emoji: '🍥', img: 'naruto',
+      { title: 'Naruto', emoji: '🍥', img: 'naruto', url: 'https://www.viz.com/naruto',
         blurb: 'The ninja way. Grew up with this one — Pain arc still goes unbelievably hard.',
         tags: ['Shonen', 'Classic'], theme: 'ember' },
-      { title: 'One Piece', emoji: '🏴‍☠️', img: 'onepiece',
+      { title: 'One Piece', emoji: '🏴‍☠️', img: 'onepiece', url: 'https://www.viz.com/one-piece',
         blurb: 'The greatest adventure ever told. The Straw Hats, the world-building, the emotional gut-punches.',
         tags: ['Shonen', 'Adventure'], theme: 'ocean' },
-      { title: 'Attack on Titan', emoji: '🗡️', img: 'aot',
+      { title: 'Attack on Titan', emoji: '🗡️', img: 'aot', url: 'https://shingeki.tv',
         blurb: 'Peak storytelling. Every reveal flips the board. Few shows stick the landing like this.',
         tags: ['Dark', 'Thriller'], theme: 'iron' },
-      { title: 'Hunter x Hunter', emoji: '🐸', img: 'hxh',
+      { title: 'Hunter x Hunter', emoji: '🐸', img: 'hxh', url: 'https://www.viz.com/hunter-x-hunter',
         blurb: 'Nen, the Chimera Ant arc, and the smartest power system in anime. Gon and Killua forever.',
         tags: ['Shonen', 'Strategy'], theme: 'aether' },
     ],
     shows: [
-      { title: 'Friends', emoji: '☕', img: 'friends',
+      { title: 'Friends', emoji: '☕', img: 'friends', url: 'https://www.max.com/shows/friends',
         blurb: 'The one I rewatch on loop. Could it BE any more comforting?',
         tags: ['Sitcom', '90s'], theme: 'ember' },
-      { title: 'The Big Bang Theory', emoji: '⚛️', img: 'bigbang',
+      { title: 'The Big Bang Theory', emoji: '⚛️', img: 'bigbang', url: 'https://www.max.com/shows/big-bang-theory',
         blurb: 'Bazinga. Nerd humor that hits home a little too often.',
         tags: ['Sitcom', 'Nerdy'], theme: 'aether' },
-      { title: 'How I Met Your Mother', emoji: '☂️', img: 'himym',
+      { title: 'How I Met Your Mother', emoji: '☂️', img: 'himym', url: 'https://www.hulu.com/series/how-i-met-your-mother',
         blurb: 'Legen — wait for it — dary. The Playbook, the slaps, the feels.',
         tags: ['Sitcom', 'Drama'], theme: 'ocean' },
-      { title: 'Brooklyn Nine-Nine', emoji: '🚓', img: 'b99',
+      { title: 'Brooklyn Nine-Nine', emoji: '🚓', img: 'b99', url: 'https://www.nbc.com/brooklyn-nine-nine',
         blurb: 'Cool cool cool cool. The best ensemble comedy of its era. Noice. Toit.',
         tags: ['Sitcom', 'Workplace'], theme: 'toxic' },
     ],
     screen: [
-      { title: 'Game of Thrones', emoji: '🐉', img: 'got',
+      { title: 'Game of Thrones', emoji: '🐉', img: 'got', url: 'https://www.hbo.com/game-of-thrones',
         blurb: 'Westeros at its peak was untouchable. Dragons, politics, betrayal — winter came hard.',
         tags: ['Fantasy', 'Epic'], theme: 'iron' },
-      { title: 'Marvel (MCU)', emoji: '🦸', img: 'mcu',
+      { title: 'Marvel (MCU)', emoji: '🕷️', img: 'mcu', url: 'https://www.marvel.com/movies',
         blurb: 'A decade-long saga that paid off in Endgame. I was there for every "I am Iron Man."',
         tags: ['Superhero', 'Cinematic Universe'], theme: 'crimson' },
-      { title: 'Justice League', emoji: '🦇', img: 'justiceleague',
+      { title: 'Justice League', emoji: '🦇', img: 'justiceleague', url: 'https://www.dc.com/movies/justice-league-2017',
         blurb: 'The DC trinity and friends. The Snyder Cut redemption arc was real.',
         tags: ['Superhero', 'DC'], theme: 'ocean' },
     ],
@@ -62,11 +62,13 @@
 
   function cardHTML(item) {
     return `
-      <article class="hcard theme-${item.theme}" tabindex="0">
+      <a class="hcard theme-${item.theme}" href="${item.url}" target="_blank" rel="noopener"
+         aria-label="${item.title} — visit official site">
         <div class="hcard-media">
           <img src="assets/${item.img}.jpg" alt="${item.title}" loading="lazy"
                onerror="this.style.display='none'" />
           <span class="hcard-emoji" aria-hidden="true">${item.emoji}</span>
+          <span class="hcard-visit" aria-hidden="true">Official site ↗</span>
         </div>
         <div class="hcard-body">
           <h3>${item.title}</h3>
@@ -75,7 +77,7 @@
             ${item.tags.map(t => `<li>${t}</li>`).join('')}
           </ul>
         </div>
-      </article>`;
+      </a>`;
   }
 
   function render(target, list) {
