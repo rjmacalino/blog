@@ -61,14 +61,16 @@
   };
 
   function cardHTML(item) {
+    const isWiki = item.url.includes('wikipedia.org');
+    const linkLabel = isWiki ? 'Wikipedia ↗' : 'Official site ↗';
     return `
       <a class="hcard theme-${item.theme}" href="${item.url}" target="_blank" rel="noopener"
-         aria-label="${item.title} — visit official site">
+         aria-label="${item.title} — ${isWiki ? 'read on Wikipedia' : 'visit official site'}">
         <div class="hcard-media">
           <img src="assets/${item.img}.jpg" alt="${item.title}" loading="lazy"
                onerror="this.style.display='none'" />
           <span class="hcard-emoji" aria-hidden="true">${item.emoji}</span>
-          <span class="hcard-visit" aria-hidden="true">Official site ↗</span>
+          <span class="hcard-visit" aria-hidden="true">${linkLabel}</span>
         </div>
         <div class="hcard-body">
           <h3>${item.title}</h3>
